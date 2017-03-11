@@ -1,0 +1,15 @@
+﻿<form name="createCategory">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3 form-group">
+				<label class="control-label">Category Name</label>
+				<input class="form-control" type="text" ng-model="vm.category.name" required />
+			</div>
+			<div class="col-md-3 form-group">
+				<label class="control-label">Category Description</label>
+				<input class="form-control" type="text" ng-model="vm.category.description" required />
+			</div>
+		</div>
+		<button class="btn btn-success" ng-click="vm.addCategory();">Save</button>
+	</div>
+</form>

@@ -1,0 +1,23 @@
+﻿<form name="productEdit">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-4 form-group">
+				<label class="control-label">Product Name</label>
+				<input class="form-control" type="text" ng-model="vm.product.name" required />
+			</div>
+			<div class="col-md-4 form-group">
+				<label class="control-label">Unit Price</label>
+				<input class="form-control" type="text" ng-model="vm.product.unitPrice" required />
+			</div>
+			<div class="col-md-4 form-group">
+				<label class="control-label">Product Code</label>
+				<div>{{vm.product.productCode}}</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="col-md-6">
+				<button class="btn btn-success" ng-disabled="productEdit.$invalid" ng-click="vm.update();">Save</button>
+			</div>
+		</div>	
+	</div>
+</form>

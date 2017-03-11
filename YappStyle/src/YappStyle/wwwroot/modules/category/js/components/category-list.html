@@ -1,0 +1,14 @@
+﻿<form name="categoryList">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-3" ng-repeat="category in vm.categories track by $index">
+					<category category-obj="category"></category>
+				</div>
+				<div class="col-md-3">
+					<button ng-click="vm.addCategory()" class="btn btn-success">Add Category</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
