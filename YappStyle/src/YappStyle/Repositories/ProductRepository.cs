@@ -48,7 +48,20 @@ namespace YappStyle.Repositories
 
             var categoryList = data as DataListModel;
 
-            products.AddRange(categoryList.ModelList.SelectMany(o => o.Products));
+            var categoryModels = categoryList.ModelList;
+                 
+            foreach (var item in categoryModels)
+            {
+                products.AddRange(item.Products.Select(o => new ProductModel
+                {
+                    CategoryName = item.Name,
+                    Name = o.Name,
+                    ProductCode = o.ProductCode,
+                    UnitPrice = o.UnitPrice
+
+                }));
+            }
+
 
             return products;
         }
