@@ -11,9 +11,10 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', 'productFactory', 'categoryFactory', '$state'];
+	controller.$inject = ['$log', 'productFactory', 'categoryFactory', '$state'];
 
-	function controller($log, $stateParams, productFactory, categoryFactory, $state) {
+	function controller($log, productFactory, categoryFactory, $state) {
+
 		var vm = this;
 
 		vm.getData = getData;
@@ -49,13 +50,12 @@
 		}
 
 		function getData(searchModels) {
+
 			refresh(searchModels)
 				.then(function (result) {
 
 				vm.products = result.data;		
-			});
-
-			
+			});			
 		}
 
 		function filterByCategory(categoryName) {
@@ -71,9 +71,7 @@
 			
 			vm.searchModels.push(vm.searchText)
 
-			vm.getData(vm.searchModels);
-
-			
+			vm.getData(vm.searchModels);		
 		}
 
 		function getCategoryList(categorySearch)
@@ -82,7 +80,9 @@
 
 			return categoryFactory.getData(vm.categorySearch)
 				.then(function (result) {
+
 					vm.categories = result.data;
+
 					return result;
 				});
 		}
@@ -93,6 +93,7 @@
 		}
 
 		function addProduct(categoryName) {
+
 			$state.go('product-create', { categoryName: categoryName });
 		}
 	}

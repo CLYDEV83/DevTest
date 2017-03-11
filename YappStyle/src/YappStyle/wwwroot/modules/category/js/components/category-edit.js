@@ -11,32 +11,26 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', 'categoryFactory', '$state'];
+	controller.$inject = ['$log', 'categoryFactory', '$state'];
 
-	function controller($log, $stateParams, categoryFactory, $state) {
+	function controller($log, categoryFactory, $state) {
+
 		var vm = this;
 
 		vm.update = update;
 
 		vm.$onChanges = function (changesObj) {
 
-			$log.debug('in edit', vm.categoryName);
-
 			if (changesObj.categoryName && changesObj.categoryName.currentValue) {
 
-			
 				vm.categoryName = changesObj.categoryName.currentValue;
-
-				$log.debug('categoryName', changesObj);
 
 				getCategory(vm.categoryName)
 					.then(function (result) {
-						$log.debug('got the category', result);
+						
 						vm.category = result.data;
-
 				});
 			}
-
 		}
 
 		function getCategory(categoryName)
@@ -52,8 +46,8 @@
 
 			categoryFactory.updateCategory(vm.categoryName, vm.category)
 				.then(function (result) {
-					$state.go('category-list');
-				
+
+					$state.go('category-list');			
 				});
 		}
 	}

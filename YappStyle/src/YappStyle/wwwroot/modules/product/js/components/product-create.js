@@ -11,13 +11,13 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', 'productFactory', '$state'];
+	controller.$inject = ['$log', 'productFactory', '$state'];
 
-	function controller($log, $stateParams, productFactory, $state) {
+	function controller($log, productFactory, $state) {
+
 		var vm = this;
 
 		vm.addProduct = addProduct;
-		//vm.categoryName = categoryName;
 
 		vm.product = {
 			categoryName: vm.categoryName
@@ -28,7 +28,6 @@
 			productFactory.createProduct(vm.product)
 				.then(function (result) {
 
-					$log.debug('Created!', result);
 					$state.go('product-list');
 
 				});

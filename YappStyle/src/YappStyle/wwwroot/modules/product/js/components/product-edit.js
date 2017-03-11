@@ -11,9 +11,10 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', 'productFactory', '$state'];
+	controller.$inject = ['$log', 'productFactory', '$state'];
 
-	function controller($log, $stateParams, productFactory, $state) {
+	function controller($log, productFactory, $state) {
+
 		var vm = this;
 
 		vm.update = update;
@@ -26,7 +27,7 @@
 
 				getproduct(vm.productCode)
 					.then(function (result) {
-						$log.debug('got the product', result);
+						
 						vm.product = result.data;
 				});
 			}
@@ -43,6 +44,7 @@
 		function update() {
 			productFactory.updateProduct(vm.productCode, vm.product)
 				.then(function (result) {
+
 					$state.go('product-list');			
 				});
 		}

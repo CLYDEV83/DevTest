@@ -11,9 +11,9 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams'];
+	controller.$inject = ['$log'];
 
-	function controller($log, $stateParams) {
+	function controller($log) {
 		var vm = this;
 
 		vm.searchModels = [];
@@ -26,9 +26,9 @@
 		vm.searchModels.push(vm.searchText);
 
 		vm.getAllWithSearch = function () {
-			$log.debug('search function models', vm.searchModels);
+
 			vm.getData({searchModels: vm.searchModels });
 		}
-		
+
 	}
 })();

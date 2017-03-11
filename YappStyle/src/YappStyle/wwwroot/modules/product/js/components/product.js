@@ -11,9 +11,10 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', '$state'];
+	controller.$inject = ['$log','$state'];
 
-	function controller($log, $stateParams, $state) {
+	function controller($log, $state) {
+
 		var vm = this;
 
 		vm.editProduct = editProduct;
@@ -24,11 +25,10 @@
 			
 				vm.product = changesObj.productObj.currentValue;
 			}
-
 		}
 
 		function editProduct(productCode) {
-			$log.debug('edit clicked', productCode);
+	
 			$state.go('product-edit', { productCode: productCode });
 		}
 	}

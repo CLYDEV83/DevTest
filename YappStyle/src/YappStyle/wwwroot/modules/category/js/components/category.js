@@ -11,10 +11,12 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', '$state'];
+	controller.$inject = ['$log', '$state'];
 
-	function controller($log, $stateParams, $state) {
+	function controller($log, $state) {
+
 		var vm = this;
+
 		vm.editCategory = editCategory;
 
 		vm.$onChanges = function (changesObj) {
@@ -23,15 +25,10 @@
 				
 				vm.category = changesObj.categoryObj.currentValue;
 			}
-
-
-
-
 		}
 
-
 		function editCategory(categoryName) {
-			$log.debug('edit clicked', categoryName);
+
 			$state.go('category-edit', { categoryName: categoryName });
 		}
 	}

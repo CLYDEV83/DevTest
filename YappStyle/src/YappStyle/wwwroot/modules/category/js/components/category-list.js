@@ -11,9 +11,10 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log', '$stateParams', 'productFactory', 'categoryFactory', '$state'];
+	controller.$inject = ['$log','categoryFactory'];
 
-	function controller($log, $stateParams, productFactory, categoryFactory, $state) {
+	function controller($log, categoryFactory) {
+
 		var vm = this;
 
 		vm.addCategory = addCategory;
@@ -25,17 +26,18 @@
 
 		}
 
-
 		function getCategoryList(categorySearch) {
+
 			vm.categorySearch = categorySearch || [];
 
 			return categoryFactory.getData(vm.categorySearch)
 				.then(function (result) {
+
 					vm.categories = result.data;
+
 					return result;
 				});
 		}
-
 
 		function addCategory() {
 			$state.go('category-create');
