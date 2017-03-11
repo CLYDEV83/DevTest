@@ -20,6 +20,13 @@ namespace YappStyle.DataSource
             return await Task.FromResult(model);
         }
 
+        public async Task<string> SerializeObjects(DataListModel obj)
+        {
+            var json = JsonConvert.SerializeObject(obj);
+
+            return await Task.FromResult(json);
+        }
+
         public void WriteToFile(string file)
         {
 

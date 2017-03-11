@@ -42,34 +42,13 @@ namespace YappStyle.Repositories
 
         public async Task<List<ProductModel>> GetBaseList()
         {
-
             var products = new List<ProductModel>();
 
             var data = await base.GetData();
 
             var categoryList = data as DataListModel;
 
-            var categoryModels = categoryList.ModelList.Select(o => new CategoryModel
-            {
-                Description = o.Description,
-                Name = o.Name,
-                Products = o.Products
-
-            }).ToList();
-
-
-            foreach (var item in categoryModels)
-            {
-                products.AddRange(item.Products.Select(o => new ProductModel
-                {
-                    CategoryName = item.Name,
-                    Name = o.Name,
-                    ProductCode = o.ProductCode,
-                    UnitPrice = o.UnitPrice
-
-                }));
-
-            }
+            products.AddRange(categoryList.ModelList.SelectMany(o => o.Products));
 
             return products;
         }
@@ -89,17 +68,16 @@ namespace YappStyle.Repositories
 
            var categoryList = data as DataListModel;
 
-
             foreach (var item in categoryList.ModelList.SelectMany(c => c.Products).Where(p => p.ProductCode == productCode))
             {
                 item.Name = model.Name;
                 item.UnitPrice = model.UnitPrice;
             }
-            var json = JsonConvert.SerializeObject(categoryList);
+
+            var json = await SerializeData(categoryList);
 
             SaveData(json);
-
-          
+    
             return model;
         }
 
@@ -111,7 +89,7 @@ namespace YappStyle.Repositories
 
             categoryList.ModelList.Where(o => o.Name == model.CategoryName).FirstOrDefault().Products.Add(model);
 
-            var json = JsonConvert.SerializeObject(categoryList);
+            var json = await SerializeData(categoryList);
 
             SaveData(json);
 

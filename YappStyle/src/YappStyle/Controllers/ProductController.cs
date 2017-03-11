@@ -15,8 +15,7 @@ namespace YappStyle.Controllers
     {
         public ProductController(ProductRepository repo) : base(repo)
         {
-        }
 
- 
+        }
     }
 }

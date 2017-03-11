@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using YappStyle.Interfaces;
 using YappStyle.Models;
@@ -13,28 +11,20 @@ namespace YappStyle.Repositories.Base
         where TWebModel : class, IWebModel
     {
         private readonly IDataSource _dataSet;
+
         public WebRepository(IDataSource dataSet)
         {
             _dataSet = dataSet;
         }
-    
+
         public virtual Task<TWebModel> Create(TWebModel model)
         {
-
             throw new NotImplementedException();
         }
 
         public virtual async Task<List<TWebModel>> GetAll(List<QueryModel> model)
         {
-            var dataList = await _dataSet.DesrializeObjects();
-
-            var models = new List<TWebModel>();
-
-            var data = dataList.ModelList.ToList();
-
-            data.ForEach(o => models.Add(o as TWebModel));  
-
-            return models;
+            return await GetAll();
         }
 
         public virtual async Task<List<TWebModel>> GetAll()
@@ -53,7 +43,6 @@ namespace YappStyle.Repositories.Base
         public virtual Task<TWebModel> GetByIdentifier(string identifier)
         {
             throw new NotImplementedException();
-
         }
 
         public virtual async Task<IDataSet> GetData()
@@ -66,6 +55,13 @@ namespace YappStyle.Repositories.Base
         public virtual Task<TWebModel> Update(string name, TWebModel model)
         {
             throw new NotImplementedException();
+        }
+
+        public virtual async Task<string> SerializeData(DataListModel data)
+        {
+            var result = await _dataSet.SerializeObjects(data);
+
+            return result;
         }
 
         public void SaveData(string file)

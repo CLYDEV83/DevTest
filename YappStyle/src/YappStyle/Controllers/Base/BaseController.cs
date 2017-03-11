@@ -12,14 +12,12 @@ namespace YappStyle.Controllers.Base
       where TRepository : IWebRepository<TWebModel>
       where TWebModel : class, IWebModel
     {
-
         private readonly TRepository _repo;
 
-        public BaseController( TRepository repo)
+        public BaseController(TRepository repo)
         {
             _repo = repo;
         }
-
 
         [Route("get/all")]
         [HttpPost]
@@ -37,8 +35,7 @@ namespace YappStyle.Controllers.Base
 
                 throw new Exception(e.ToString());
             }
-          
-         
+
             return Ok(models);
         }
 
@@ -67,7 +64,7 @@ namespace YappStyle.Controllers.Base
         public virtual async Task<IActionResult> Update(string identifier, [FromBody]TWebModel model)
         {
             TWebModel result;
-      
+
             try
             {
                 result = await _repo.Update(identifier, model);
@@ -77,7 +74,6 @@ namespace YappStyle.Controllers.Base
 
                 throw new Exception(e.ToString());
             }
-
 
             return Ok(result);
         }
@@ -98,7 +94,6 @@ namespace YappStyle.Controllers.Base
 
                 throw new Exception(e.ToString());
             }
-
 
             return Ok(result);
         }

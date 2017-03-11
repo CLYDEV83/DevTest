@@ -11,6 +11,8 @@ namespace YappStyle.Interfaces
     {
         Task<DataListModel> DesrializeObjects();
 
+        Task<string> SerializeObjects(DataListModel obj);
+
         void WriteToFile(string file);
     }
 }

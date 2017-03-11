@@ -51,7 +51,7 @@ namespace YappStyle.Repositories
 
         public override async Task<CategoryModel> Update(string name, CategoryModel model)
         {
-            
+
             var data = await base.GetData();
 
             var dataList = data as DataListModel;
@@ -62,7 +62,7 @@ namespace YappStyle.Repositories
                 item.Description = model.Description;
             }
 
-            var json = JsonConvert.SerializeObject(dataList);
+            var json = await SerializeData(dataList);
 
             SaveData(json);
 
