@@ -63,39 +63,39 @@
 
             ]     
 
-        },     
-        {       
-            "name": "Girls Clothing",       
-            "description": "Clothing for girls",       
-            "products": [         
-                {           
-                    "name": "Trousers",           
-                    "unitPrice": 5.99,           
-                    "productCode": "GCL001"         
+        },
+	{
+		"name": "Girls Clothing",
+		"description": "Clothing for girls",
+		"products": [
+			{
+				"name": "Trousers",
+				"unitPrice": 5.99,
+				"productCode": "GCL001"
 
-                },         
-                {           
-                    "name": "Skirt",          
-                    "unitPrice": 5.5,           
-                    "productCode": "GCL002"         
+			},
+			{
+				"name": "Skirt",
+				"unitPrice": 5.5,
+				"productCode": "GCL002"
 
-                },         
-                {           
-                    "name": "Shirt",           
-                    "unitPrice": 4.99,           
-                    "productCode": "GCL003"         
+			},
+			{
+				"name": "Shirt",
+				"unitPrice": 4.99,
+				"productCode": "GCL003"
 
-                },
-													{
-														"name": "Blazer",
-														"unitPrice": 12.99,
-														"productCode": "GCL004"
+			},
+			{
+				"name": "Blazer",
+				"unitPrice": 12.99,
+				"productCode": "GCL004"
 
-													}       
+			}
 
-            ]     
+		]
 
-        },     
+	},     
         {       
             "name": "Stationery",       
             "description": "Stationery products",       

@@ -6,6 +6,7 @@
 
     function productFactory($http) {
         var service = {
+        	getDataWithSearch: getDataWithSearch,
         	getData: getData,
         	getProduct: getProduct,
         	updateProduct: updateProduct,
@@ -14,9 +15,14 @@
 
         return service;
 
-        function getData(searchModel) {
+        function getDataWithSearch(searchModel) {
 			
         	return $http.post('/api/product/get/all', searchModel);
+        }
+
+        function getData() {
+
+        	return $http.post('/api/product/get');
         }
 
         function getProduct(productCode) {

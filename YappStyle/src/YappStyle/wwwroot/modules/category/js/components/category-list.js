@@ -11,9 +11,9 @@
         	controllerAs: 'vm'
         });
 
-	controller.$inject = ['$log','categoryFactory'];
+	controller.$inject = ['$log','categoryFactory', '$state'];
 
-	function controller($log, categoryFactory) {
+	function controller($log, categoryFactory, $state) {
 
 		var vm = this;
 

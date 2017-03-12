@@ -16,6 +16,11 @@ namespace YappStyle.Repositories
         {
         }
 
+        public override async Task<List<ProductModel>> GetAll()
+        {
+            return await GetBaseList();
+        }
+
         public override async Task<List<ProductModel>> GetAll(List<QueryModel> model)
         {
 

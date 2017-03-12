@@ -4,7 +4,7 @@
         .component('searchBox', {
         	restrict: 'E',
         	bindings: {
-        		getData: '&'
+        		getDataWithSearch: '&'
         	},
         	templateUrl: '/modules/product/js/components/search/search-box.html',
         	controller: controller,
@@ -26,8 +26,8 @@
 		vm.searchModels.push(vm.searchText);
 
 		vm.getAllWithSearch = function () {
-
-			vm.getData({searchModels: vm.searchModels });
+			$log.debug('search clicked');
+			vm.getDataWithSearch({ searchModels: vm.searchModels });
 		}
 
 	}

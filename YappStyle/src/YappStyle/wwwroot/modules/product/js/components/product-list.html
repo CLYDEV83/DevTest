@@ -4,13 +4,13 @@
 			<p class="lead">Product Categories</p>
 			<div class="list-group">
 				<span>
-					<a ng-click="vm.getData();" class="list-group-item">All Products</a>
+					<a ng-click="vm.getAllProducts();" class="list-group-item">All Products</a>
 				</span>
 				<span ng-repeat="cat in vm.categories">
 					<a ng-click="vm.filterByCategory(cat.name);" class="list-group-item">{{cat.name}}</a>
 				</span>
 			</div>
-			<search-box get-data="vm.getData(searchModels)"></search-box>
+			<search-box get-data-with-search="vm.getProductsWithSearch(searchModels)"></search-box>
 		</div>
 		<div class="col-md-9">
 			<h3>{{vm.categoryName}}</h3>

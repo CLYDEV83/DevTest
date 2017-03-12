@@ -32,7 +32,24 @@ namespace YappStyle.Controllers.Base
             }
             catch (Exception e)
             {
+                throw new Exception(e.ToString());
+            }
 
+            return Ok(models);
+        }
+
+        [Route("get")]
+        public virtual async Task<IActionResult> GetAll()
+        {
+
+            var models = new List<TWebModel>();
+
+            try
+            {
+                models = await _repo.GetAll();
+            }
+            catch (Exception e)
+            {
                 throw new Exception(e.ToString());
             }
 
@@ -51,7 +68,6 @@ namespace YappStyle.Controllers.Base
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.ToString());
             }
 
@@ -71,7 +87,6 @@ namespace YappStyle.Controllers.Base
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.ToString());
             }
 
@@ -91,7 +106,6 @@ namespace YappStyle.Controllers.Base
             }
             catch (Exception e)
             {
-
                 throw new Exception(e.ToString());
             }
 

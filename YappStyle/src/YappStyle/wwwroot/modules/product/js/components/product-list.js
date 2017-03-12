@@ -18,44 +18,58 @@
 		var vm = this;
 
 		vm.getData = getData;
+		vm.getProductsWithSearch = getProductsWithSearch;
 		vm.filterByCategory = filterByCategory;
 		vm.addProduct = addProduct;
 		vm.isFiltered = false;
+		vm.getAllProducts = getAllProducts;
 
 		vm.$onInit = function () {
 		
 			getCategoryList();
-			getData();
-
+			getAllProducts();			
 		}
 
-		function refresh(searchModels) {
+		function getData() {
 
-			vm.searchModels = searchModels || [];
+			return productFactory.getData()
+					.then(function (result) {
 
-			if (vm.searchModels.length > 0 && vm.searchModels[0].fieldName !== 'SearchText') {
+						return result;
+					});
+		}
 
-				vm.isFiltered = true;		
-			}
-			else {
+		function getAllProducts() {
 
-				vm.isFiltered = false;
-			}
+			vm.categoryName = null;
 
-			return productFactory.getData(vm.searchModels)
+			getData().then(function (result) {
+				
+				vm.products = result.data;
+
+			});
+		}
+
+		function getProductsWithSearch(searchModels) {
+
+			vm.isFiltered = false;
+
+			vm.categoryName = null;
+			
+				getDataWithQuery(searchModels)
+					.then(function (result) {
+
+						vm.products = result.data;
+				});
+		}
+
+		function getDataWithQuery(searchModels) {
+
+			return productFactory.getDataWithSearch(searchModels)
 				.then(function (result) {
 
 					return result;
 				});
-		}
-
-		function getData(searchModels) {
-
-			refresh(searchModels)
-				.then(function (result) {
-
-				vm.products = result.data;		
-			});			
 		}
 
 		function filterByCategory(categoryName) {
@@ -71,7 +85,13 @@
 			
 			vm.searchModels.push(vm.searchText)
 
-			vm.getData(vm.searchModels);		
+			getDataWithQuery(vm.searchModels)
+				.then(function (result) {
+
+					vm.isFiltered = true;
+
+					vm.products = result.data;
+			});
 		}
 
 		function getCategoryList(categorySearch)
