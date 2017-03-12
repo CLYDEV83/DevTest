@@ -49,5 +49,6 @@
     		url: '/category/create',
     		template: '<category-create></category-create>',
     	});
+
     }
   ]);

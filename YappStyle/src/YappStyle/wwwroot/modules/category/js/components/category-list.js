@@ -26,9 +26,7 @@
 
 		}
 
-		function getCategoryList(categorySearch) {
-
-			vm.categorySearch = categorySearch || [];
+		function getCategoryList() {
 
 			return categoryFactory.getData(vm.categorySearch)
 				.then(function (result) {

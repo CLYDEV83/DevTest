@@ -14,9 +14,9 @@
 
 		return service;
 
-		function getData(searchModel) {
+		function getData() {
 
-			return $http.post('/api/category/get/all', searchModel);
+			return $http.post('/api/category/get');
 
 		}
 

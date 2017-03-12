@@ -26,7 +26,7 @@
 		vm.searchModels.push(vm.searchText);
 
 		vm.getAllWithSearch = function () {
-			$log.debug('search clicked');
+
 			vm.getDataWithSearch({ searchModels: vm.searchModels });
 		}
 

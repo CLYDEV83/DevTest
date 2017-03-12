@@ -42,6 +42,7 @@
 		function getAllProducts() {
 
 			vm.categoryName = null;
+			vm.isFiltered = false;
 
 			getData().then(function (result) {
 				
@@ -94,11 +95,10 @@
 			});
 		}
 
-		function getCategoryList(categorySearch)
+		function getCategoryList()
 		{
-			vm.categorySearch = categorySearch || [];
-
-			return categoryFactory.getData(vm.categorySearch)
+			
+			return categoryFactory.getData()
 				.then(function (result) {
 
 					vm.categories = result.data;
