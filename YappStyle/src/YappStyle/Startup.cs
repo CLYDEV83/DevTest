@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,7 +49,6 @@ namespace YappStyle
             services.AddScoped(typeof(ProductRepository), typeof(ProductRepository));
             services.AddScoped(typeof(CategoryRepository), typeof(CategoryRepository));
             services.AddScoped<IDataSource, DataSource.DataSourceFactory>();
-            //services.AddScoped<I>
             services.AddScoped<ISearchFilter, QueryModel>();
         }
     }

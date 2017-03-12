@@ -10,11 +10,11 @@ namespace YappStyle.Repositories.Base
     public class WebRepository<TWebModel> : IWebRepository<TWebModel>
         where TWebModel : class, IWebModel
     {
-        private readonly IDataSource _dataSet;
+        private readonly IDataSource _dataSource;
 
-        public WebRepository(IDataSource dataSet)
+        public WebRepository(IDataSource dataSource)
         {
-            _dataSet = dataSet;
+            _dataSource = dataSource;
         }
 
         public virtual Task<TWebModel> Create(TWebModel model)
@@ -29,7 +29,7 @@ namespace YappStyle.Repositories.Base
 
         public virtual async Task<List<TWebModel>> GetAll()
         {
-            var dataList = await _dataSet.DesrializeObjects();
+            var dataList = await _dataSource.DesrializeObjects();
 
             var models = new List<TWebModel>();
 
@@ -47,7 +47,7 @@ namespace YappStyle.Repositories.Base
 
         public virtual async Task<IDataSet> GetData()
         {
-            var dataList = await _dataSet.DesrializeObjects();
+            var dataList = await _dataSource.DesrializeObjects();
 
             return dataList;
         }
@@ -59,14 +59,14 @@ namespace YappStyle.Repositories.Base
 
         public virtual async Task<string> SerializeData(DataListModel data)
         {
-            var result = await _dataSet.SerializeObjects(data);
+            var result = await _dataSource.SerializeObjects(data);
 
             return result;
         }
 
         public void SaveData(string file)
         {
-            _dataSet.WriteToFile(file);
+            _dataSource.WriteToFile(file);
         }
 
     }
