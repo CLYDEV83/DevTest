@@ -31,7 +31,7 @@ namespace YappStyle.Repositories
 
             categoryList.ModelList.Add(model);
 
-            var json = JsonConvert.SerializeObject(categoryList);
+            var json = await SerializeData(categoryList);
 
             SaveData(json);
 
